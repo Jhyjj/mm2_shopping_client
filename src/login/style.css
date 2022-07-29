@@ -1,0 +1,46 @@
+#login{
+    width: 80%;
+    max-width: 1200px;
+    height: 80vh;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15%;
+}
+form{
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: white;
+}
+
+table{
+    width: 80%;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+tr{height: 50px; width: 60%;}
+th{width: 30%; height: 100%;}
+td:nth-child(2){width: 50%; height: 100%;}
+td>input{height: 100%;width: 90%; border:none; outline: none; border-bottom: 2px solid #ccc;}
+td button{
+    width: 80%;
+    height: 70px;
+    border: none;
+    outline: none;
+}
+
+form p{
+    color: #555;
+}
+
+form span{
+    display: inline-block;
+    width: 100px;
+}
+
+form span:hover{
+    color: skyblue;
+    cursor: pointer;
+}
+
