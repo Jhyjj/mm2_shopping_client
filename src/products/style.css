@@ -1,0 +1,38 @@
+.products{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.products ul{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.products ul li{
+    width: 23%;
+    border: 1px solid aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.products ul li img{
+    width: 100%;
+    height: 100%;
+}
+
+.products ul li>div{
+    width: 100%;
+    height: 100px;
+    background: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+}

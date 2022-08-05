@@ -2,6 +2,99 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100vh;
-    margin-top: 300px;
+    height: 70vh;
+    margin-top: 200px;
+}
+
+#join form{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 50px;
+    background:#fff;
+    border: 3px dashed skyblue;
+    position: relative;
+}
+
+#join table{
+    width: 80%;
+}
+
+#join table tr{
+    width: 90%;
+    height: 40px;
+}
+
+#join th{
+    width: 30%;
+}
+
+#join td{
+    width: 60%;
+    text-align: left;
+}
+
+#join td input{
+    width: 50%;
+    height: 30px;
+    display: inline-block;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+}
+
+#join td input.phone{
+    width: 25%;
+}
+
+#join td input.phone:not(:nth-child(1)){
+    margin-left: 10px;
+}
+
+#join td input.add2{
+    width: 80%;
+    margin-top: 5px;
+}
+
+#join td input.isPet{
+    width: 20%;
+    height: 20px;
+    margin-right: 0;
+}
+
+
+#join button{
+    width: 100px;
+    height: 30px;
+    border:2px solid skyblue;
+    outline: none;
+    background: aliceblue;
+}
+
+#join td#btns{
+    text-align: center;
+    height: 50px;
+}
+
+#join td#btns button{
+    margin: 5px;
+}
+
+#join h2{
+    width: 300px;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+    border: 3px dashed #fff;
+    border-bottom: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #fff;
+}
+
+#join form img{
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    width: 20%;
 }

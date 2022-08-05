@@ -7,10 +7,8 @@
     padding: 15%;
 }
 form{
-    margin-top: 50px;
     padding-top: 20px;
-    padding-bottom: 20px;
-    background: white;
+    background: aliceblue;
 }
 
 table{
@@ -19,28 +17,32 @@ table{
     padding: 5%;
 }
 
-tr{height: 50px; width: 60%;}
-th{width: 30%; height: 100%;}
-td:nth-child(2){width: 50%; height: 100%;}
-td>input{height: 100%;width: 90%; border:none; outline: none; border-bottom: 2px solid #ccc;}
-td button{
+#login tr{height: 50px; width: 60%;}
+#login th{width: 30%; height: 100%;}
+#login td:nth-child(2){width: 50%; height: 100%;}
+#login td>input{height: 100%;width: 90%; border:none; outline: none; border-bottom: 2px solid #ccc; background: none;}
+#login td button{
     width: 80%;
     height: 70px;
     border: none;
     outline: none;
 }
 
-form p{
+#login form p{
     color: #555;
 }
 
-form span{
+#login form span{
     display: inline-block;
     width: 100px;
 }
 
-form span:hover{
+#login form span:hover{
     color: skyblue;
     cursor: pointer;
+}
+
+#login form img{
+    width: 60%;
 }
 

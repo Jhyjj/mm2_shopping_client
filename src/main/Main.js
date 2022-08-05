@@ -48,7 +48,7 @@ const Main = () => {
                         loop={true}>
                             <SwiperSlide><img src='/img/review.png' alt=''></img></SwiperSlide>
                             <SwiperSlide><img src='/img/delivery.jpg' alt=''></img></SwiperSlide>
-                            <SwiperSlide><img src='/img/review.png' alt=''></img></SwiperSlide>
+                            <SwiperSlide><img src='/img/joinevent.jpg' alt=''></img></SwiperSlide>
                             <SwiperSlide><img src='/img/review.png' alt=''></img></SwiperSlide>
                         </Swiper>
                         

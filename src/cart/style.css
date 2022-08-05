@@ -1,0 +1,89 @@
+/* 장바구니 */
+#cart{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 200px;
+    background-color: #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+}
+
+#cartList{
+    padding-top: 30px;
+}
+
+#cartList>div:nth-child(1){
+    width: 80%;
+    height: 40px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 2%;
+}
+
+#cartList>div:nth-child(1)> span{
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+
+#cartList ul{
+    width: 80%;
+    margin: 0 auto;
+}
+#cartList li{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+#cartList li img{
+    width: 100px; height: 100px;
+}
+
+#cartList li #textbox{
+    width: 30%;
+}
+
+#cartList li input:nth-child(4){
+    width: 5%;
+    height: 30px;
+    text-align: center;
+}
+
+#cartList li>p{
+    width: 10%;
+}
+
+#total{
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 3px dashed skyblue;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#total form{
+    background: none;
+    padding-top: 10px;
+}
+
+#total form table{
+    padding: 0;
+}
+
+#total tr{
+    height: 45px;
+}
+
+#total button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: rgb(198, 232, 245);
+}

@@ -1,0 +1,140 @@
+#detail{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 200px;
+    background: aliceblue;
+    padding-bottom: 50px;
+}
+
+/* 디테일 상단(대표이미지, 상품명, 가격, 주문수량 등) */
+#detail_top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding-top: 50px;
+}
+
+#detail_top>div{
+    width: 50%;
+    height: 500px;
+    overflow: hidden;
+}
+
+#d_img>img{
+    height: 100%;
+}
+
+#d_text form{
+    background: none;
+    height: 100%;
+}
+
+#d_text table{
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+#d_text table tr:not(:nth-child(1)){
+    border-bottom: 1px solid #ccc;
+}
+
+#d_text table td:nth-child(1){
+    width: 35%;
+}
+
+#d_text table button{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: rgb(176, 214, 230);
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+#d_text table tr:last-child{
+    border: none;
+}
+
+#d_text table .optiontr{
+    font-size: 14px;
+    color: #555;
+    height: 60px;
+    position: relative;
+}
+
+#d_text table .optiontr input{
+    width: 10%;
+    margin-left: 100px;
+    text-align: center;
+}
+
+#d_text table .optiontr div>span{
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    padding-right: 40px;
+    margin-top: 10px;
+}
+
+#d_text table .optiontr div{
+    width: 90%;
+    display: inline-block;
+}
+
+#d_text table .optiontr>td>span{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+/* 디테일 하단 */
+
+#detail_bottom>ul{
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#detail_bottom>ul>li{
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid rgb(176, 214, 230);
+    margin-bottom: 50px;
+}
+
+#detail_bottom>ul>li.info{
+    background:rgb(176, 214, 230);
+}
+
+/* 리뷰 리스트 */
+
+#pro_review table{
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#pro_review table tr{
+    border-bottom: 1px solid rgb(176, 214, 230);
+    height: 40px;
+}
+
+#pro_review table tr:first-child{
+    background: rgb(176, 214, 230);
+}
+
+#pro_review table tr td:nth-child(2){
+    width: 60%;
+}
+
+#pro_review table tr.hidden{
+    display: none;
+}

@@ -1,0 +1,49 @@
+#writeReview{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 200px;
+    
+}
+
+#writeReview form{
+    background: none;
+}
+
+#writeReview table{
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
+    padding: 10px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#writeReview table input{
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+}
+
+#writeReview table textarea{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+#writeReview table tr:last-child{
+    text-align: center;
+}
+
+#writeReview table button{
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin:0 10px;
+    background: aliceblue;
+}

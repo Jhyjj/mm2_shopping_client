@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogout } from '../modules/logincheck';
+import { getCookie, removeCookie } from '../util/cookie';
+
 
 const Header = () => {
     window.addEventListener('scroll',()=>{
@@ -25,27 +30,56 @@ const Header = () => {
         document.querySelector('#pull').style.transform = 'translateY(100%)'
     }
 
+    // 쿠키
+    const username = getCookie('name');
+    const id = getCookie('id');
+    console.log(username)
+    const isLogin = useSelector(state=>state.loginCheck.isLogin);
+    const dispatch = useDispatch();
+    const logoutClick = ()=>{
+        alert('로그아웃 되었습니다.')
+        removeCookie('id');
+        removeCookie('name');
+        dispatch(setLogout());
+        
+    }
+    useEffect(()=>{},[isLogin])
+
     return (
         
         <div id="header">
-            <h1>신세개백화점</h1>
+            <Link to="/"><h1>신세개백화점</h1></Link>
             {/* 로그인 외 personal 메뉴창 */}
             <nav className="personal menu">
                 <ul>
-                    <li>로그인</li> 
-                    <li>로그아웃</li>
-                    <li>회원가입</li>
-                    <li>장바구니</li>
-                    <li>마이페이지</li>
+                    {isLogin && <>
+                        <li>{username}님 환영합니다🎉</li>
+                        <li onClick={logoutClick}>로그아웃</li>
+                        {id==='admin' && <li><Link to="/createProduct">상품등록하기</Link></li>}
+                        
+                    </>}
+                    {!isLogin && <>
+                        <li><Link to="/login">로그인</Link></li>
+                    <li><Link to="/join">회원가입</Link></li>
+                    </>}
+                    
+                    
+                    
+                    <li><Link to="/cart">장바구니</Link></li>
+                    <li><Link to="/mypage">마이페이지</Link></li>
                 </ul>
+                <div>
+                    <input id="search" type="text"/><span>🔎</span>
+                </div>
+                
             </nav>
             <nav className="product menu">
                 <ul>
                     <li>
                         <div>BEST</div>
                         <ul>
-                            <li>주간BEST</li>
-                            <li>리뷰BEST</li>
+                            <li><Link to="/weeklybest">주간BEST</Link></li>
+                            <li><Link to="/reviewBest">리뷰BEST</Link></li>
                         </ul>
                     </li>
                     <li>
