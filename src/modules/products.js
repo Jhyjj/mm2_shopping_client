@@ -28,10 +28,10 @@ const initialState = {
 
 //액션생성함수
 
-export const getProducts = (title)=> async dispatch =>{
+export const getProducts = (keyword)=> async dispatch =>{
     dispatch({type:GET_PRODUCTS})
     try{
-        const response = await axios.get(`${API_URL}/products/${title}`)
+        const response = await axios.get(`${API_URL}/products/${keyword}`)
         const result = response.data;
         console.log(result)
         dispatch({type:GET_PRODUCTS_SUCCESS, result})
@@ -75,45 +75,57 @@ export default function printProduct(state=initialState, action){
         case GET_PRODUCTS:
             return{
                 ...state,
-                loading:true,
-                data:null,
-                error:null
+                products:{
+                    loading:true,
+                    data:null,
+                    error:null
+                }
             }
         case GET_PRODUCTS_SUCCESS:
             return{
                 ...state,
-                loading:false,
-                data:action.result,
-                error:null
+                products:{
+                    loading:false,
+                    data:action.result,
+                    error:null
+                }
             }
         case GET_PRODUCTS_ERROR:
             return{
                 ...state,
-                loading:false,
-                data:null,
-                error:action.error
+                products:{
+                    loading:false,
+                    data:null,
+                    error:action.error
+                }
                 }
         case GET_PRODUCT:
             return{
                 ...state,
-                loading:true,
-                data:null,
-                error:null
+                product:{
+                    loading:true,
+                    data:null,
+                    error:null
+                }
             }
         case GET_PRODUCT_SUCCESS:
             return{
                 ...state,
-                loading:false,
-                data:action.result,
-                error:null
+                product:{
+                    loading:false,
+                    data:action.result,
+                    error:null
+                }
             }
         case GET_PRODUCT_ERROR:
             return{
                 ...state,
-                loading:false,
-                data:null,
-                error:action.error
-                }
+                product:{
+                    loading:false,
+                    data:null,
+                    error:action.error
+                }    
+            }
         default:
             return state
     }

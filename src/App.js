@@ -7,8 +7,6 @@ import Login from './login/Login';
 import Join from './join/Join';
 import Cart from './cart/Cart';
 import Mypage from './mypage/Mypage';
-import Weekly from './products/Weekly';
-import ReviewBest from './products/ReviewBest';
 import ProductDetail from './productDetail/ProductDetail';
 import WriteReview from './review/WriteReview';
 import CreateProduct from './createProduct/CreateProduct';
@@ -16,6 +14,7 @@ import { useDispatch } from 'react-redux/es/exports';
 import {useEffect} from 'react';
 import { getCookie } from './util/cookie';
 import { setLogin } from './modules/logincheck';
+import Products from './products/Products';
 
 
 function App() {
@@ -33,11 +32,10 @@ function App() {
           <Route path='/' element={<Main/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
-          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/cart/:id' element={<Cart/>}/>
           <Route path='/mypage' element={<Mypage/>}/>
-          <Route path='/weeklybest' element={<Weekly/>}/>
-          <Route path='/reviewbest' element={<ReviewBest/>}/>
-          <Route path='/detail' element={<ProductDetail/>}/>
+          <Route path='/products/:keyword' element={<Products/>}/>
+          <Route path='/detail/:no' element={<ProductDetail/>}/>
           <Route path='/writeReview' element={<WriteReview/>}/>
           <Route path='/createProduct' element={<CreateProduct/>}/>
         </Routes>

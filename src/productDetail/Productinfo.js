@@ -1,9 +1,10 @@
 import React from 'react';
+import { API_URL } from '../config/contansts';
 
-const Productinfo = () => {
+const Productinfo = ({data}) => {
     return (
         <div id="product_info">
-            <img src="/img/bigball_detail.jpg" alt=""/>
+            <img src={`${API_URL}/upload/${data}`} alt=""/>
         </div>
     );
 };

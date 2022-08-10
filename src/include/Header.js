@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogout } from '../modules/logincheck';
 import { getCookie, removeCookie } from '../util/cookie';
 
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
+    window.addEventListener('onload',()=>{
     window.addEventListener('scroll',()=>{
         console.log(window.scrollY)
         if(window.scrollY !== 0){
@@ -21,6 +25,7 @@ const Header = () => {
             document.querySelector('#pull').style.opacity = 0
         }
     })
+})
 
     //pull onclick 이벤트
     function onClick(){
@@ -45,6 +50,13 @@ const Header = () => {
     }
     useEffect(()=>{},[isLogin])
 
+    function LoginCheck(){
+        if(!isLogin){
+            alert('로그인 후 이용가능합니다.')
+            navigate('/login')
+        }
+    }
+
     return (
         
         <div id="header">
@@ -56,17 +68,15 @@ const Header = () => {
                         <li>{username}님 환영합니다🎉</li>
                         <li onClick={logoutClick}>로그아웃</li>
                         {id==='admin' && <li><Link to="/createProduct">상품등록하기</Link></li>}
-                        
                     </>}
                     {!isLogin && <>
                         <li><Link to="/login">로그인</Link></li>
-                    <li><Link to="/join">회원가입</Link></li>
+                        <li><Link to="/join">회원가입</Link></li>
                     </>}
+
+                    <li onClick={LoginCheck}><Link to={`/cart/${id}`}>장바구니</Link></li>
+                    <li onClick={LoginCheck}><Link to="/mypage">마이페이지</Link></li>
                     
-                    
-                    
-                    <li><Link to="/cart">장바구니</Link></li>
-                    <li><Link to="/mypage">마이페이지</Link></li>
                 </ul>
                 <div>
                     <input id="search" type="text"/><span>🔎</span>
@@ -78,33 +88,36 @@ const Header = () => {
                     <li>
                         <div>BEST</div>
                         <ul>
-                            <li><Link to="/weeklybest">주간BEST</Link></li>
-                            <li><Link to="/reviewBest">리뷰BEST</Link></li>
+                            <li><Link to="/products/weeklybest">주간BEST</Link></li>
+                            <li><Link to="/products/reviewbest">리뷰BEST</Link></li>
+                            <li><Link to="/products/new">신제품</Link></li>
                         </ul>
                     </li>
                     <li>
                         <div>SIZE</div>
                         <ul>
-                            <li>대형견</li>
-                            <li>중형견</li>
-                            <li>소형견</li>
+                            <li><Link to="/products/대형견">대형견</Link></li>
+                            <li><Link to="/products/중형견">중형견</Link></li>
+                            <li><Link to="/products/소형견">소형견</Link></li>
                         </ul>
                     </li>
                     <li>
                         <div>유형별</div>
                         <ul>
-                            <li>노즈워크</li>
-                            <li>인형</li>
-                            <li>공</li>
-                            <li>이갈이용</li>
+                            <li><Link to="/products/노즈워크">노즈워크</Link></li>
+                            <li><Link to="/products/인형">인형</Link></li>
+                            <li><Link to="/products/공">공</Link></li>
+                            <li><Link to="/products/이갈이">이갈이</Link></li>
+                            <li><Link to="/products/터그놀이">터그놀이</Link></li>
                         </ul>
                     </li>
                     <li>
-                        <div>메뉴4</div>
+                        <div>소재별</div>
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <li><Link to="/products/패브릭">패브릭</Link></li>
+                            <li><Link to="/products/라텍스">라텍스</Link></li>
+                            <li><Link to="/products/나무">나무</Link></li>
+                            <li><Link to="/products/플라스틱">플라스틱</Link></li>
                         </ul>
                     </li>
                 </ul>

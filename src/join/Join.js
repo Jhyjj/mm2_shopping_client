@@ -99,7 +99,7 @@ const Join = () => {
         axios.post(`${API_URL}/idcheck`,formData)
         .then(result=>{
             console.log(result.data)
-            if(result.data === []){
+            if(result.data.length===0){
                 alert('사용가능한 아이디입니다.')
             }else{
                 alert('사용할 수 없는 아이디입니다.')

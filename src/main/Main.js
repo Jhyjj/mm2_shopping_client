@@ -9,22 +9,23 @@ import "swiper/css/pagination";
 SwiperCore.use([Autoplay,Navigation,Pagination])
 
 const Main = () => {
-    window.addEventListener('scroll',()=>{
-        if(window.scrollY >= 200){
-            document.querySelector('.mb1').style.position='fixed';
-            document.querySelector('.mb2').style.position='fixed';
-            document.querySelector('.mb3').style.position='fixed';
-            document.querySelector('.mb4').style.position='fixed';
-            document.querySelector('.mb4').style.top='30%';
-        }
-        if(window.scrollY < 200){
-            document.querySelector('.mb1').style.position='absolute';
-            document.querySelector('.mb2').style.position='absolute';
-            document.querySelector('.mb3').style.position='absolute';
-            document.querySelector('.mb4').style.position='absolute';
-            document.querySelector('.mb4').style.top='20%';
-        }
-    })
+        window.addEventListener('scroll',()=>{
+            if(window.scrollY >= 200){
+                document.querySelector('.mb1').style.position='fixed';
+                document.querySelector('.mb2').style.position='fixed';
+                document.querySelector('.mb3').style.position='fixed';
+                document.querySelector('.mb4').style.position='fixed';
+                document.querySelector('.mb4').style.top='30%';
+            }
+            if(window.scrollY < 200){
+                document.querySelector('.mb1').style.position='absolute';
+                document.querySelector('.mb2').style.position='absolute';
+                document.querySelector('.mb3').style.position='absolute';
+                document.querySelector('.mb4').style.position='absolute';
+                document.querySelector('.mb4').style.top='20%';
+            }
+        })
+    
     
     return (
         <div id="main">

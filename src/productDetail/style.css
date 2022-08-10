@@ -138,3 +138,7 @@
 #pro_review table tr.hidden{
     display: none;
 }
+
+#product_info>img{
+    max-width: 100%;
+}

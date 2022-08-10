@@ -1,8 +1,60 @@
 import './style.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCart } from '../modules/cart';
+import { API_URL } from '../config/contansts';
+import axios from 'axios';
 
 const Cart = () => {
+
+    const {id} = useParams();
+
+    const {data,loading,error} = useSelector(state=>state.printCart.cart)
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(getCart(id))
+    },[dispatch,id])
+
+    let arr = [];
+    const [product,setProduct] = useState({
+        no:"",
+        isChecked:""
+    })
+    const [checkList, setCheckList] = useState([])
+
+    const onClick = (e)=>{
+        e.target.value = e.target.checked;
+        console.log(e.target)
+        setProduct({
+            no:e.target.name,
+            value:e.target.value
+        })
+        console.log(product)
+    }
     
+    useEffect(()=>{
+        if(product.no !== '' && product.value==='true'){
+            setCheckList([...checkList,product])
+        }
+        if(checkList.find(list=>list.no === product.no)){
+            console.log('동일한 제품 존재')
+            checkList.splice(checkList.indexOf(list=>list.no===product.no),1)
+        }
+    },[product])
+    
+    console.log(checkList)
+
+    const deleteList = ()=>{
+        console.log(checkList)
+        axios.post(`${API_URL}/mycartdelete/${id}`,checkList)
+    }
+
+    
+    if(loading) return <div>로딩중</div>
+    if(error) return <div>에러</div>
+    if(!data) return <div>데이터없음</div>
+
     return (
         <div id="cart">
             <h2>장바구니</h2>
@@ -11,37 +63,26 @@ const Cart = () => {
                 <div>
                     <input type="checkbox"></input>
                     <span>전체 상품 담기</span>
-                    <span>선택삭제</span>
+                    <span onClick={deleteList}>선택삭제</span>
                 </div>
                 <ul>
-                    <li>
-                        <input type="checkbox"></input>
+                    {data.map(data=>(
+                        <li>
+                        <input type="checkbox" name={data.no} onClick={onClick}/>
                         <div id="imgbox">
-                            <img src="/img/ball1.jpg" alt=""/>
+                            <img src={`${API_URL}/upload/${data.p_img}`} alt=""/>
                         </div>
                         <div id="textbox">
-                            <h4>칼리 라텍스 삑삑이 공</h4>
-                            <p>노랑색 소형</p>
+                            <h4>{data.p_name}</h4>
+                            <p>{data.p_opt}</p>
                         </div>
-                        <input type="number" defaultValue={1}/>
-                        <p>3,000</p>
-                        <p>3,000</p>
-                        
+                        <input type="number" defaultValue={data.p_qty}/>
+                        <p>{data.p_price}</p>
+                        <p>{data.t_price}</p>
                     </li>
-                    <li>
-                        <input type="checkbox"></input>
-                        <div id="imgbox">
-                            <img src="/img/ball1.jpg" alt=""/>
-                        </div>
-                        <div id="textbox">
-                            <h4>칼리 라텍스 삑삑이 공</h4>
-                            <p>노랑색 소형</p>
-                        </div>
-                        <input type="number" defaultValue={1}/>
-                        <p>3,000</p>
-                        <p>3,000</p>
-                        
-                    </li>
+
+                    ))}
+                    
                 </ul>
             </div>
 
