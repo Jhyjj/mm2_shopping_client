@@ -123,7 +123,7 @@ const ProductDetail = () => {
         e.preventDefault();
         axios.post(`${API_URL}/cart/${id}`,optArr)
         alert('장바구니에 담겼습니다.')
-        navigate(`/cart/${id}`)
+        navigate(`/cart`)
     }
 
     if(loading) return <div>로딩중</div>
@@ -202,7 +202,7 @@ const ProductDetail = () => {
                 </ul>
                 <div>
                         {content.info && <Productinfo data={data.p_detail}/>}
-                        {content.info || <Review no={data.no}/>}
+                        {content.info || <Review product={data.p_name}/>}
                 </div>
             </div>
         </div>

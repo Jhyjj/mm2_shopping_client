@@ -134,6 +134,7 @@ section{
 #photo-review ul li{
     width: 19.5%;
     position: relative;
+    margin-bottom: 5px;
 }
 
 #photo-review ul li img{

@@ -7,6 +7,7 @@ import { getCookie, removeCookie } from '../util/cookie';
 
 const Header = () => {
 
+
     const navigate = useNavigate();
 
     window.addEventListener('onload',()=>{
@@ -46,6 +47,7 @@ const Header = () => {
         removeCookie('id');
         removeCookie('name');
         dispatch(setLogout());
+        navigate('/');
         
     }
     useEffect(()=>{},[isLogin])
@@ -74,7 +76,7 @@ const Header = () => {
                         <li><Link to="/join">회원가입</Link></li>
                     </>}
 
-                    <li onClick={LoginCheck}><Link to={`/cart/${id}`}>장바구니</Link></li>
+                    <li onClick={LoginCheck}><Link to="/cart">장바구니</Link></li>
                     <li onClick={LoginCheck}><Link to="/mypage">마이페이지</Link></li>
                     
                 </ul>

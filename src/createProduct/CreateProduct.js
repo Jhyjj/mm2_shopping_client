@@ -40,8 +40,8 @@ const CreateProduct = () => {
             console.log(res.data)
             setInput({
                 ...input,
-                p_img: res.data.p_img,
-                p_detail: res.data.p_detail
+                p_img: res.data.imgs[0],
+                p_detail: res.data.imgs[1]
             })
         })
         .catch(e=>{

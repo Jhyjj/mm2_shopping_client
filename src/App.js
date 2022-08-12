@@ -15,6 +15,7 @@ import {useEffect} from 'react';
 import { getCookie } from './util/cookie';
 import { setLogin } from './modules/logincheck';
 import Products from './products/Products';
+import ViewReview from './review/ViewReview';
 
 
 function App() {
@@ -32,12 +33,14 @@ function App() {
           <Route path='/' element={<Main/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
-          <Route path='/cart/:id' element={<Cart/>}/>
+          <Route path='/cart' element={<Cart/>}/>
           <Route path='/mypage' element={<Mypage/>}/>
           <Route path='/products/:keyword' element={<Products/>}/>
           <Route path='/detail/:no' element={<ProductDetail/>}/>
           <Route path='/writeReview' element={<WriteReview/>}/>
+          <Route path='/review/:no' element={<ViewReview/>}/>
           <Route path='/createProduct' element={<CreateProduct/>}/>
+          
         </Routes>
         <Footer/>
     </div>

@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import {Link} from 'react-router-dom';
+import { getCookie } from '../util/cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders } from '../modules/order';
+import Myorder from './Myorder';
+import Myreview from './Myreview';
 
 const Mypage = () => {
 
+    const id = getCookie('id');
     const [popup, setPopup] = useState(false);
 
     function onClick(){
@@ -13,40 +19,8 @@ const Mypage = () => {
     return (
         <div id="mypage">
             <h2>마이페이지</h2>
-            <div id="myorder">
-                <h3>🐾주문내역</h3>
-                <table>
-                    <tr>
-                        <th>주문번호</th>
-                        <th>주문내역</th>
-                        <th>금액</th>
-                        <th>주문상태</th>
-                        <th>리뷰</th>
-                    </tr>
-                    <tr>
-                        <td>287</td>
-                        <td>칼리 라텍스 삑삑이공 외</td>
-                        <td>6,000</td>
-                        <td>배송중</td>
-                        <td><Link to="/writeReview"><span>리뷰작성하기</span></Link></td>
-                    </tr>
-                </table>
-            </div>
-            <div id="myreview">
-                <h3>🐾작성리뷰</h3>
-                <table>
-                    <tr>
-                        <th>NO</th>
-                        <th>상품명</th>
-                        <th>제목</th>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>칼리 라텍스 삑삑이공</td>
-                        <td>아주 환장하게 좋아하네요</td>
-                    </tr>
-                </table>
-            </div>
+            <Myorder id={id}/>
+            <Myreview id={id}/>
             <div id="myfnq">
                 <h3>🐾1:1 문의</h3>
                 <table>

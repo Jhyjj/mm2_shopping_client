@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import NewAr from './NewAr';
+import PhotoReview from './PhotoReview';
 
 SwiperCore.use([Autoplay,Navigation,Pagination])
 
@@ -25,7 +27,6 @@ const Main = () => {
                 document.querySelector('.mb4').style.top='20%';
             }
         })
-    
     
     return (
         <div id="main">
@@ -54,90 +55,8 @@ const Main = () => {
                         </Swiper>
                         
                     </section>
-
-                    {/* 신상품 */}
-                    <section id="newAr">
-                        <h2>금주의 신상품✨</h2>
-                        <p>MD가 엄선한 금주의 신상품을 만나보세요💕</p>
-                        <ul>
-                            <li>
-                                <img src='/img/ball1.jpg' alt=''></img>
-                                <div className='product_tbox'>
-                                    <h3>상품명</h3>
-                                    <span>상품금액</span>
-                                    <div className='likebtn'>장바구니 담기</div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/ball1.jpg' alt=''></img>
-                                <div className='product_tbox'>
-                                    <h3>상품명</h3>
-                                    <span>상품금액</span>
-                                    <div className='likebtn'>장바구니 담기</div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/ball1.jpg' alt=''></img>
-                                <div className='product_tbox'>
-                                    <h3>상품명</h3>
-                                    <span>상품금액</span>
-                                    <div className='likebtn'>장바구니 담기</div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/ball1.jpg' alt=''></img>
-                                <div className='product_tbox'>
-                                    <h3>상품명</h3>
-                                    <span>상품금액</span>
-                                    <div className='likebtn'>장바구니 담기</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </section>
-
-                    {/* 포토리뷰 */}
-                    <section id="photo-review">
-                        <h2>포토리뷰📷</h2>
-                        <p>댕댕이들의 생생한 리뷰를 만나보세요💕</p>
-                        <ul>
-                            <li>
-                                <img src='/img/mori.jpg' alt=''></img>
-                                <div className='review_tbox'>
-                                    <h3>리뷰제목</h3>
-                                    <p>모리 진짜 너무 귀엽구요 귀엽구요 귀여워요 사랑스럽구요 자랑하고싶네요</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/mori.jpg' alt=''></img>
-                                <div className='review_tbox'>
-                                    <h3>리뷰제목</h3>
-                                    <p>리뷰내용입니다.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/mori.jpg' alt=''></img>
-                                <div className='review_tbox'>
-                                    <h3>리뷰제목</h3>
-                                    <p>리뷰내용입니다.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/mori.jpg' alt=''></img>
-                                <div className='review_tbox'>
-                                    <h3>리뷰제목</h3>
-                                    <p>리뷰내용입니다.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src='/img/mori.jpg' alt=''></img>
-                                <div className='review_tbox'>
-                                    <h3>리뷰제목</h3>
-                                    <p>리뷰내용입니다.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
+                    <NewAr/>
+                    <PhotoReview/>
                 </div>
         </div>
     );

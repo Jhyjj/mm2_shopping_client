@@ -47,3 +47,35 @@
     margin:0 10px;
     background: aliceblue;
 }
+
+#writeReview #view{
+    background-color: aliceblue;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 20px;
+
+}
+
+#writeReview #view table{
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+    height: auto;
+}
+
+#writeReview #view table tr{
+    height: 30px;
+    line-height: 1.6;
+}
+
+#writeReview #view table tr>th:first-child {
+    width: 15%;
+}
+
+#writeReview #view table img{
+    height: 300px;
+}
+
+#writeReview #view table button{
+    background-color: rgb(177, 213, 245);
+}

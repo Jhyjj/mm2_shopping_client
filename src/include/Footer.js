@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -31,7 +32,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <ul>
-                       <li>인스타그램 | 페이스북 | 블로그</li>
+                       <li><a href='/'>인스타그램</a> | <a href='https://youtube.com/channel/UCJkkFBsRFG0ILdC9EwSA3hA' target="_blank">유투브</a> | <a href="https://blog.naver.com/glhd" target="_blank">블로그</a></li>
                        <li>SITEMAP
                             <select>
                                 <option>SITEMAP</option>
