@@ -12,7 +12,8 @@ import { getCookie } from '../util/cookie';
 const ProductDetail = () => {
 
     const id = getCookie('id');
-    console.log(id);
+    const isLogin = useSelector(state=>state.loginCheck.isLogin);
+    console.log(isLogin)
 
     const navigate = useNavigate()
     const {no} = useParams();
@@ -121,9 +122,15 @@ const ProductDetail = () => {
 
     const onSubmit= (e)=>{
         e.preventDefault();
-        axios.post(`${API_URL}/cart/${id}`,optArr)
-        alert('장바구니에 담겼습니다.')
-        navigate(`/cart`)
+        if(!isLogin){
+            alert('로그인 후 이용가능합니다. 로그인창으로 이동합니다.')
+            navigate('/login')
+        }else{
+            axios.post(`${API_URL}/cart/${id}`,optArr)
+            alert('장바구니에 담겼습니다.')
+            navigate('/cart')
+        }
+        
     }
 
     if(loading) return <div>로딩중</div>

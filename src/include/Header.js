@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogout } from '../modules/logincheck';
@@ -9,8 +9,6 @@ const Header = () => {
 
 
     const navigate = useNavigate();
-
-    window.addEventListener('onload',()=>{
     window.addEventListener('scroll',()=>{
         console.log(window.scrollY)
         if(window.scrollY !== 0){
@@ -26,10 +24,10 @@ const Header = () => {
             document.querySelector('#pull').style.opacity = 0
         }
     })
-})
 
     //pull onclick 이벤트
     function onClick(){
+        document.querySelector('.product').style.display = 'block'
         document.querySelector('.product').style.transform = 'translateY(0)'
         document.querySelector('.product').style.opacity = 1
         document.querySelector('#pull').style.opacity = 0
@@ -59,6 +57,18 @@ const Header = () => {
         }
     }
 
+    const [input, setInput] = useState()
+
+    function onChange(e){
+        setInput(e.target.value)
+    }
+
+    function onClickSearch(){
+        console.log(input)
+        navigate(`/products/${input}`)
+        setInput("")
+    }
+
     return (
         
         <div id="header">
@@ -81,7 +91,7 @@ const Header = () => {
                     
                 </ul>
                 <div>
-                    <input id="search" type="text"/><span>🔎</span>
+                    <input id="search" type="text" onChange={onChange} value={input}/><span onClick={onClickSearch}>🔎</span>
                 </div>
                 
             </nav>

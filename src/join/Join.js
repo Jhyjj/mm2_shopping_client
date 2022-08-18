@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Join = () => {
 
     const navigate = useNavigate();
+    document.querySelector('.product').style.display = "none";
 
     //우편번호 관리하기
     const onAddData = (data)=>{

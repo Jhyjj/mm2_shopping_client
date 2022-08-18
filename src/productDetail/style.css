@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 300px;
     background: aliceblue;
     padding-bottom: 50px;
 }
@@ -135,10 +135,30 @@
     width: 60%;
 }
 
-#pro_review table tr.hidden{
+#pro_review table img{
+    max-width: 90%;
+    margin: 10px 0;
+}
+
+#pro_review table .imgtd{
+    padding: 10px;
+}
+
+
+/* #pro_review table tr.off{
     display: none;
 }
 
+#pro_review table tr.on{
+    display: table-cell;
+} */
+
 #product_info>img{
     max-width: 100%;
+}
+
+#pro_review table .off{
+    /* overflow: hidden;
+    transition: max-height 0.3s ease-out; */
+    height: 0px;
 }

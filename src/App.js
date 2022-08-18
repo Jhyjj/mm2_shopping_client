@@ -16,6 +16,10 @@ import { getCookie } from './util/cookie';
 import { setLogin } from './modules/logincheck';
 import Products from './products/Products';
 import ViewReview from './review/ViewReview';
+import Personalq from './notice/Personalq';
+import PersonalList from './notice/PersonalList';
+import Notice from './notice/Notice';
+import Fnq from './notice/Fnq';
 
 
 function App() {
@@ -40,6 +44,10 @@ function App() {
           <Route path='/writeReview' element={<WriteReview/>}/>
           <Route path='/review/:no' element={<ViewReview/>}/>
           <Route path='/createProduct' element={<CreateProduct/>}/>
+          <Route path='/personalQ' element={<Personalq/>}/>
+          <Route path='/adminPersonalQ' element={<PersonalList/>}/>
+          <Route path='/notice' element={<Notice/>}/>
+          <Route path='/fnq' element={<Fnq/>}/>
           
         </Routes>
         <Footer/>

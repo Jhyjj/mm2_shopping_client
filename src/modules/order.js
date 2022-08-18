@@ -12,6 +12,9 @@ const GET_REVIEW_SUCCESS = "GET_REVIEW_SUCCESS"
 const GET_REVIEW_ERROR = "GET_REVIEW_ERROR"
 
 //작성한 1대1문의
+const GET_PERSONALQ = "GET_PERSONALQ"
+const GET_PERSONALQ_SUCCESS = "GET_PERSONALQ_SUCCESS"
+const GET_PERSONALQ_ERROR = "GET_PERSONALQ_ERROR"
 
 const initialState = {
     order:{
@@ -20,6 +23,11 @@ const initialState = {
         error:null
     },
     review:{
+        loading:false,
+        data:null,
+        error:null
+    },
+    personalQ:{
         loading:false,
         data:null,
         error:null
@@ -48,6 +56,30 @@ export const getReview = (id) => async dispatch =>{
     }
     catch(e){
         dispatch({type:GET_REVIEW_ERROR,error:e})
+    }
+}
+
+export const getPersonalQ = (id) => async dispatch =>{
+    dispatch({type:GET_PERSONALQ})
+    try{
+        const response = await axios.get(`${API_URL}/mypersonalQ/${id}`)
+        const result = response.data;
+        dispatch({type:GET_PERSONALQ_SUCCESS,result})
+    }
+    catch(e){
+        dispatch({type:GET_PERSONALQ_ERROR,error:e})
+    }
+}
+
+export const adminpersonalQ = () => async dispatch =>{
+    dispatch({type:GET_PERSONALQ})
+    try{
+        const response = await axios.get(`${API_URL}/adminpersonalQ/`)
+        const result = response.data;
+        dispatch({type:GET_PERSONALQ_SUCCESS,result})
+    }
+    catch(e){
+        dispatch({type:GET_PERSONALQ_ERROR,error:e})
     }
 }
 
@@ -119,6 +151,34 @@ export default function printMypage(state=initialState, action){
                                 error:action.error
                             }
                         }
+        case GET_PERSONALQ:
+                        return{
+                            ...state,
+                            personalQ:{
+                                loading:true,
+                                data:null,
+                                error:null
+                            }
+                        }
+        case GET_PERSONALQ_SUCCESS:
+                        return{
+                            ...state,
+                            personalQ:{
+                                loading:false,
+                                data:action.result,
+                                error:null
+                            }
+                        }
+        case GET_PERSONALQ_ERROR:
+                        return{
+                            ...state,
+                            personalQ:{
+                                loading:false,
+                                data:null,
+                                error:action.error
+                            }
+                        }
+                        
         default:
             return state
     }

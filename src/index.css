@@ -84,6 +84,7 @@ body{
   margin-right: 20px;
 }
 
+/* 검색창 */
 .personal input{
   width: 100%;
   height: 25px;
@@ -92,6 +93,7 @@ body{
   border-bottom: 1px solid #fff;
   background: none;
   padding: 5px;
+  margin-bottom: 5px;
 }
 
 .personal>div>span{
@@ -107,7 +109,8 @@ body{
   position: absolute;
   top:100%;
   transition: 0.5s;
-  background: rgba(135, 207, 235, 0.705);
+  background: skyblue;
+  /* background: rgba(135, 207, 235, 0.705); */
 }
 
 .product ul{
@@ -142,13 +145,19 @@ body{
   transform: translateX(-50%);
   display: none;
 }
+
 .product>ul>li:hover >ul{
   display: flex;
 }
 
+.product>ul>li:hover >ul>li{
+  width: 25%;
+  border-radius: 50%;
+}
+
 #pull{
-  width: 70px;
-  height: 100px;
+  width: 5%;
+  height: 40%;
   background: url('/public/img/pull2.png') no-repeat;
   position: absolute;
   top: 100%;
@@ -165,7 +174,7 @@ body{
   width: 100%;
   height: 300px;
   background-color: aqua;
-  margin-top: 80px;
+  margin-top: 150px;
   border-top: 1px aqua;
 }
 
@@ -228,4 +237,57 @@ body{
   background: none;
   right: 40%;
   top: 40%;
+}
+
+
+/* 반응형 */
+@media screen and (max-width:768px){
+  #footer p{
+    font-size: 12px;
+  }
+  #footer h2{
+    font-size: 14px;
+  }
+  #footer li{
+    font-size: 14px;
+  }
+  /* ------------헤더----------- */
+  #header{
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  /* 로고 */
+  #header>a{
+    width: 15%;
+    margin-left: 5%;
+    border: 1px solid #fff;
+  }
+  #header h1{
+    display: inline-block;
+    font-size: 30px;
+    line-height: 1;
+    height: 100%;
+    padding: 10px 0;
+  }
+
+  .personal{
+    width: 50%;
+  }
+  .personal>div{
+    width: 100%;
+    height: 100%;
+  }
+  .personal>ul{
+    display: none;
+  }
+
+
+
+  .product{
+    display: none;
+  }
+  #pull{
+    display: none;
+  }
+  
 }

@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 300px;
 }
 
 .products ul{
@@ -36,4 +36,8 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 5px;
+}
+
+.product_tbox p{
+    font-size: 14px;
 }

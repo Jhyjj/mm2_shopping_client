@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../config/contansts';
 import { getProducts } from '../modules/products';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 
 const NewAr = () => {
@@ -21,26 +26,31 @@ const NewAr = () => {
         <section id="newAr">
                         <h2>금주의 신상품✨</h2>
                         <p>MD가 엄선한 금주의 신상품을 만나보세요💕</p>
+
                         
                         <ul>
+                        <Swiper
+                            spaceBetween={0}
+                            slidesPerView={3}
+                            loop={true}>
                         {data.map(newAr=>(
-                        
+                            <SwiperSlide>
                              <li>
                                 <Link to={`/detail/${newAr.no}`}>
                                 <img src={`${API_URL}/upload/${newAr.p_img}`} alt=''/>
                                 </Link>
                                 <div className='product_tbox'>
                                     <h3><Link to={`/detail/${newAr.no}`}>{newAr.p_name}</Link></h3>
+                                    <p>{newAr.p_intro}</p>
                                      <span>{newAr.p_price}</span>
-                                 <div className='likebtn'>장바구니 담기</div>
                                 </div>
                                 
                             </li>
-                         
-                            
+                            </SwiperSlide> 
                             ))}
-                           
+                           </Swiper>
                         </ul>
+                        
 
                     </section>
 

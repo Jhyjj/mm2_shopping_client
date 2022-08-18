@@ -1,0 +1,68 @@
+#personalQ{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 300px;
+}
+
+#personalQ form{
+    background: none;
+}
+
+#personalQ table{
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
+    padding: 10px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#personalQ #admin{
+    border-collapse: collapse;
+    text-align: center;
+    height: auto;
+    line-height: 40px;
+}
+
+#personalQ table input{
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+}
+
+#personalQ table textarea{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+#personalQ table tr:last-child{
+    text-align: center;
+}
+
+#personalQ table button{
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin:0 10px;
+    background: aliceblue;
+}
+
+#personalQ #admin tr{
+    border-bottom: 1px solid #fff;
+}
+
+#personalQ .notice{
+    margin-top: 50px;
+}
+
+#personalQ .notice .req{
+    padding: 20px;
+    background-color: rgba(265,265,265,0.3);
+}
