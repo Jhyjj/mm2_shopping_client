@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Link, Route, Routes, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogout } from '../modules/logincheck';
 import { getCookie, removeCookie } from '../util/cookie';
@@ -78,6 +78,12 @@ const Header = () => {
     function closeMobilePop(){
         setMobilePop(false)
     }
+
+    // 창 이동시 모바일 메뉴바 닫기🔔'
+    const location = useLocation();
+    useEffect(()=>{
+     setMobilePop(false)   
+    },[location])
 
     //모바일 카테고리 상세 상태관리
     const [mobilePro, setMobilePro] = useState({
