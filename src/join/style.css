@@ -62,8 +62,14 @@
     margin-right: 0;
 }
 
+#idCheck{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 2;
+}
 
-#join button{
+#join button, #idCheck{
+    text-align: center;
     width: 100px;
     height: 30px;
     border:2px solid skyblue;
@@ -97,4 +103,20 @@
     bottom: 0;
     left: 3%;
     width: 20%;
+}
+
+@media screen and (max-width:768px){
+    #join{
+        padding: 0;
+        margin-top: 100px;
+    }
+    #join>form{
+        width: 95%;
+    }
+    #join>form>table{
+        width: 100%;
+    }
+    #join td input.phone{
+        width: 23%;
+    }
 }

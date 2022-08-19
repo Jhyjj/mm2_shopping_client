@@ -87,3 +87,21 @@
     outline: none;
     background-color: rgb(198, 232, 245);
 }
+
+@media screen and (max-width:768px){
+   #cart{
+    width: 95%;
+    margin-top: 150px;
+    font-size: 14px;
+    margin-bottom: 100px;
+   }
+   #cart #cartList li img{
+    width: 40px; height: 40px;
+   }
+   #cart #cartList h4{
+    font-size: 12px;
+   }
+   #cart #cartList p{
+    font-size: 11px;
+   }
+}

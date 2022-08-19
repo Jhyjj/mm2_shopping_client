@@ -12,7 +12,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    document.querySelector('.product').style.display = "none";
+    // document.querySelector('.product').style.display = "none";
 
     const dispatch = useDispatch();
     const [loginData, setLoingData] = useState({

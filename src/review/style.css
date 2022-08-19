@@ -79,3 +79,23 @@
 #writeReview #view table button{
     background-color: rgb(177, 213, 245);
 }
+
+@media screen and (max-width:768px){
+    #writeReview{
+        margin-top: 150px;
+        margin-bottom: 100px;
+    }
+    #writeReview p{
+        font-size: 14px;
+    }
+    #writeReview form table{
+        width: 90%;
+        font-size: 14px;
+    }
+    #writeReview #view{
+        width: 90%;
+    }
+    #writeReview #view table img{
+        max-width: 90%;
+    }
+}

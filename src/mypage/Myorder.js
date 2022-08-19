@@ -11,10 +11,11 @@ const Myorder = ({id}) => {
         dispatch(getOrders(id))
     },[dispatch,id])
 
-    console.log(data)
+
     if(loading) return <div>로딩중</div>
     if(error) return <div>에러발생</div>
     if(!data) return <div>데이터가 없음</div>
+
 
     return (
         
@@ -36,10 +37,10 @@ const Myorder = ({id}) => {
                     {data.map(order=>(
                         <tr>
                         <td>{order.order_no}</td>
-                        <td>{order.p_name}</td>
+                        {order.p_name.split(',').length===1? <td>{order.p_name}</td>: <td>{`${order.p_name.split(',')[0]} 외 ${order.p_name.split(',').length-1}`}</td>}
                         <td>{order.order_price}</td>
                         <td>배송완료</td>
-                        <td><Link to="/writeReview" state={order} ><span>리뷰작성하기</span></Link></td>
+                        <td><Link to="/writeReview" state={order} ><span>작성하기</span></Link></td>
                     </tr>
                     ))}
                     

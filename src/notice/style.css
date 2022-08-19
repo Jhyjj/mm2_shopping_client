@@ -66,3 +66,13 @@
     padding: 20px;
     background-color: rgba(265,265,265,0.3);
 }
+
+@media screen and (max-width:768px){
+    #personalQ{
+        margin-top: 150px;
+        margin-bottom: 200px;
+    }
+    #personalQ table{
+        width: 90%;
+    }
+}

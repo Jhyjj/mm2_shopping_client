@@ -46,3 +46,15 @@ table{
     width: 60%;
 }
 
+@media screen and (max-width:768px){
+    #login{
+        padding: 0;
+        padding-top: 150px;
+    }
+    #login>form{
+        width: 100%;
+    }
+    table{
+        width: 100%;
+    }
+}

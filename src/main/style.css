@@ -1,60 +1,76 @@
 #main{
     width: 100%;
-    height: 320vh;
-    overflow: hidden;
+    height: 270vh;
+    /* overflow: hidden; */
     background-color: skyblue;
     position: relative;
     
 }
 
 .main_back{
-    background-color: lightgreen;
-    border-radius: 100%;
-    position: absolute;
+    position: sticky;
+    position: -webkit-sticky;
+    /* background-color: green; */
     z-index: 1;
+    height: 130vh;
+    top: 50px;
+    margin-top: 200px;
     
 }
-.main_back.mb1{
+    .mb1{
+    position: absolute;
+    top: 10%;
     left: -50%;
-    top: 12%;
     width: 1600px;
     height: 800px;
+    border-radius: 100%;
+    z-index: 1;
     background: rgb(118, 192, 158);
 }
 
-.main_back.mb2{
+     .mb2{
+    position: absolute;
+    top: 15%;
     right: -5%;
-    top: 10%;
     width: 800px;
     height: 500px;
+    border-radius: 100%;
+    z-index: 1;
     background: rgb(111, 196, 111);
 }
 
-.main_back.mb3{
-    top: 11%;
+    .mb3{
+    position: absolute;
     left: -5%;
+    top: 15%;
     width: 110%;
     height: 600px;
+    border-radius: 100%;
+    z-index: 1;
+    background-color: lightgreen;
 
 }
-.main_back.mb4{
+    .mb4{
+    position: absolute;
+    height: 900px;
+    top: 40%;
     width: 100%;
-    height: 1000px;
-    top: 20%;
     border-radius: 0;
+    background-color: lightgreen;
+    z-index: 1;
 }
 
 #contents{
-    margin-top: 400px;
     width: 100%;
     position: absolute;
+    top: 10%;
     z-index: 2;
 }
 section{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100vh;
+    height: 90vh;
     padding-top: 50px;
 }
 
@@ -68,9 +84,10 @@ section{
 #newAr{
     overflow: hidden;
     position: relative;
+    height: 80vh;
 }
 #newAr ul{
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
     height: 60%;
     width: 100%;
@@ -79,6 +96,12 @@ section{
 }
 #newAr ul div{
     width: 100%;
+}
+#newAr>h2{
+    font-size: 32px;
+}
+#newAr>p{
+    font-size: 24px;
 }
 
 .swiper-slide-active{
@@ -91,14 +114,19 @@ section{
     width: 90%;
     height: 95%;
     padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 #newAr ul li img{
-    width: 100%;
+    width: 95%;
 }
 
 #newAr .product_tbox{
+    width: 95%;
+    margin: 0 auto;
     height: 30%;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 10px;
     border: 1px solid #eee;
     display: flex;

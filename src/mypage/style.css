@@ -51,3 +51,27 @@
 #mypage table tr#popup.on{
     display: table-row;
 }
+
+@media screen and (max-width:768px){
+    #mypage{
+     width: 95%;
+     margin-top: 150px;
+     font-size: 14px;
+     margin-bottom: 100px;
+     padding:20px 10px;
+    }
+    #mypage>div>h3{
+        padding-left: 15px;
+    }
+    #mypage>div{
+        padding: 0;
+        padding-bottom: 20px;
+    }
+    #mypage table{
+        width: 95%;
+        font-size: 12px;
+    }
+    #mypage table>tr>th:first-child{
+        width: 7%;
+    }
+ }
