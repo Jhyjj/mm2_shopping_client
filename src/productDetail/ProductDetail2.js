@@ -24,7 +24,74 @@ const ProductDetail = () => {
     },[dispatch,no])
 
 
-   
+    //선택옵션 관리
+    const [opt, setOpt] = useState({
+        p_name: "",
+        optname:"",
+        qty:1,
+        price:"",
+        img:"",
+        isChecked:false
+    })
+
+    //선택한 옵션을 담을 배열 -> 배열을 돌면서 배열의 인덱스만큼 선택한 옵션tr 추가
+    const [optArr, setOptArr] = useState([])
+
+    let tprice;
+    const onChange = (e)=>{
+        const {name, value} = e.target;
+        console.log(name,value)
+        tprice = value.indexOf('+')!==-1? Number(value.substr(value.indexOf('+')+1, 4))+data.p_price : data.p_price
+        console.log(tprice)
+        setOpt({
+            ...opt,
+            p_name:data.p_name,
+            optname:value,
+            price: tprice,
+            qty:1,
+            price2:tprice*opt.qty,
+            img:data.p_img
+        })
+        console.log(opt)
+        }
+
+    //숫자 선택하면 옵션의 숫자가 바뀌기~!
+    const onChange2 = (e)=>{
+        const {name, value} = e.target;
+        tprice = name.indexOf('+')!==-1? Number(name.substr(name.indexOf('+')+1, 4))+data.p_price : data.p_price
+        setOpt({
+            ...opt,
+            p_name:data.p_name,
+            optname : name,
+            qty:Number(value),
+            price:tprice,
+            price2: tprice*value
+        })
+
+    }
+
+    useEffect(()=>{
+        if(optArr.find(opts=>opts.optname === opt.optname)){
+            console.log('중복된 옵션명 있음')
+            setOptArr(optArr.splice(optArr.indexOf(opts=>opts.optname===opt.optname),1))
+        }
+    },[opt.qty])
+
+        useEffect(()=>{
+             if(opt.optname !== ''&& optArr.indexOf(opts=>opts.optname === opt.optname) ===-1){
+                console.log('중복된 옵션명 없음.')
+                setOptArr([...optArr, opt])
+             }
+        },[opt])
+
+        console.log(optArr)
+       
+
+    //전체 상품금액 더하기
+    let initialValue = 0;
+    const totalPrice = optArr.reduce(function(init,opt){
+        return init+opt.price2
+    },initialValue)
 
     //상품상세정보창 또는 리뷰창 띄우기
     const [content, setContent] = useState({
@@ -52,58 +119,6 @@ const ProductDetail = () => {
             })
         }
     }
-
-    // 옵션 추가하기 //옵션 객체의 초기값
-    const [opt, setOpt] = useState({
-        p_name: "",
-        optname:"",
-        qty:1,
-        price:"",
-        img:"",
-        price2:""
-    })
-
-    //추가한 옵션을 넣을 배열
-    const [optArr, setOptArr] = useState([]); //처음엔 빈 배열
-
-    let tprice;
-
-    //옵션 객체를 추가하는 onChange 함수 -> select에 걸기 
-    const onChange = (e)=>{
-        const {name, value} = e.target;
-        tprice = value.indexOf('+')!==-1? Number(value.substr(value.indexOf('+')+1, 4))+data.p_price : data.p_price
-        console.log(name,value);
-        setOpt({
-            ...opt,
-            p_name:data.p_name,
-            optname:value,
-            price:tprice,
-            price2:tprice*opt.qty,
-            img:data.p_img
-        })
-    }
-
-    useEffect(()=>{
-        if(opt.optname !== ''&& optArr.indexOf(opts=>opts.optname === opt.optname) ===-1){
-           console.log('중복된 옵션명 없음.')
-           setOptArr([...optArr, opt])
-        }
-   },[opt])
-
-   //선택한 옵션의 숫자를 변경
-   const onChange2 = (e)=>{
-    const {name, value} = e.target;
-    console.log(name,value);
-    const findIndex = optArr.findIndex(su=>su.optname===name);
-    let copyArr = [...optArr];
-    if(findIndex!==-1){
-        copyArr[findIndex] = {...copyArr[findIndex], qty:Number(value), price2:Number(value)*optArr[findIndex].price}
-    }
-    setOptArr([...copyArr]);
-   }
-   console.log(optArr);
-
-
 
     const onSubmit= (e)=>{
         e.preventDefault();
@@ -153,7 +168,7 @@ const ProductDetail = () => {
                             <tr>
                                 <td>상품선택 : </td>
                                 <td>
-                                <select name="optname" onChange={onChange}>
+                                <select onChange={onChange} name="optname">
                                     <option> --------- </option>
                                    {option.map(option=>(
                                     <option value={option}>{option}</option>
@@ -161,23 +176,21 @@ const ProductDetail = () => {
                                 </select>
                                 </td>
                             </tr>
-
                             {optArr.map(opts=>(
                                     <tr className='optiontr'>
                                     <td colSpan={2}>
                                         <div>
-                                            <p>{opts.optname} <input type="number" name={opts.optname} defaultValue={1} onChange={onChange2} min={1}/></p>
+                                            <p>{opts.optname} <input type="number" name={opts.optname} defaultValue={1} value={opts.qty} onChange={onChange2}/></p>
                                             <span>{opts.price2} </span>
                                         </div>
                                         <span>X</span>
                                     </td>
                                     </tr>
                             ))}
-
                            
                             <tr>
                                 <td>총 상품금액 : </td>
-                                <td> 원</td>
+                                <td>{totalPrice} 원</td>
                             </tr>
                             <tr>
                                 <td colSpan={2}>
@@ -202,6 +215,5 @@ const ProductDetail = () => {
         </div>
     );
 };
-
 
 export default ProductDetail;
