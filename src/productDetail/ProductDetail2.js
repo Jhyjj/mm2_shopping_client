@@ -88,10 +88,10 @@ const ProductDetail = () => {
        
 
     //전체 상품금액 더하기
-    let initialValue = 0;
+    // let initialValue = 0;
     const totalPrice = optArr.reduce(function(init,opt){
         return init+opt.price2
-    },initialValue)
+    },0)
 
     //상품상세정보창 또는 리뷰창 띄우기
     const [content, setContent] = useState({

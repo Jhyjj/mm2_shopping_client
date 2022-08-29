@@ -103,6 +103,21 @@ const ProductDetail = () => {
    }
    console.log(optArr);
 
+   //선택한 상품의 전체 금액
+   const totalPrice = optArr.reduce(function(init,opt){
+    return init+opt.price2
+    },0)
+
+    //선택한 옵션 삭제하기
+    const onDelete = (e)=>{
+        const deleteIndex =  optArr.findIndex(su=>su.optname===e.target.className);
+        let copyArr2 = [...optArr];
+        if(deleteIndex!==-1){
+            copyArr2.splice(deleteIndex,1);
+            console.log(copyArr2);
+        }
+        setOptArr([...copyArr2]);
+    }
 
 
     const onSubmit= (e)=>{
@@ -169,7 +184,7 @@ const ProductDetail = () => {
                                             <p>{opts.optname} <input type="number" name={opts.optname} defaultValue={1} onChange={onChange2} min={1}/></p>
                                             <span>{opts.price2} </span>
                                         </div>
-                                        <span>X</span>
+                                        <span className={opts.optname} onClick={onDelete}>X</span>
                                     </td>
                                     </tr>
                             ))}
@@ -177,7 +192,7 @@ const ProductDetail = () => {
                            
                             <tr>
                                 <td>총 상품금액 : </td>
-                                <td> 원</td>
+                                <td>{totalPrice} 원</td>
                             </tr>
                             <tr>
                                 <td colSpan={2}>
