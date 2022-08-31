@@ -9,31 +9,31 @@ const Header = () => {
 
 
     const navigate = useNavigate();
-    window.addEventListener('scroll',()=>{
-        console.log(window.scrollY)
-        if(window.scrollY !== 0){
-            document.querySelector('.product').style.transform = 'translateY(-50%)'
-            document.querySelector('.product').style.opacity = 0
-            document.querySelector('#pull').style.transform = 'translateY(0)'
-            document.querySelector('#pull').style.opacity = 1
-        }
-        if(window.scrollY === 0){
-            document.querySelector('.product').style.transform = 'translateY(0)'
-            document.querySelector('.product').style.opacity = 1
-            document.querySelector('#pull').style.transform = 'translateY(100%)'
-            document.querySelector('#pull').style.opacity = 0
-        }
-    })
-
-    //pull onclick 이벤트
-    function onClick(){
-        document.querySelector('.product').style.display = 'block'
-        document.querySelector('.product').style.transform = 'translateY(0)'
-        document.querySelector('.product').style.opacity = 1
-        document.querySelector('#pull').style.opacity = 0
-        document.querySelector('#pull').style.transform = 'translateY(100%)'
-    }
     
+    window.addEventListener('scroll',()=>{
+            console.log(window.scrollY)
+                if(window.location.pathname === '/'){
+                    document.querySelector('.product').classList.add('on');
+                }
+                if(window.location.pathname !== '/'){
+                    document.querySelector('.product').classList.remove('on');
+                }
+                if(window.innerWidth>768&&window.scrollY !== 0){
+                    document.querySelector('.firstHeader').style.display = 'none';
+                    document.querySelector('.scroll').style.display = 'block';
+                    document.querySelector('.product').style.transform = 'translateY(-50%)';
+                    document.querySelector('.product').style.display = 'none';
+                    
+                }
+                if(window.innerWidth>768 && window.scrollY === 0){
+                    document.querySelector('.scroll').style.display = 'none';
+                    document.querySelector('.firstHeader').style.display = 'block';
+                    document.querySelector('.product.on').style.transform = 'translateY(0)';
+                    document.querySelector('.product.on').style.display = 'block';
+                    
+                }
+    })
+  
     //모바일 화면에서 햄버거 메뉴 클릭시 이벤트 실행
 
     // 쿠키
@@ -107,31 +107,104 @@ const Header = () => {
     }
     console.log(mobilePro)
 
+    function onClick(){
+        document.querySelectorAll('.subclass').forEach(li=>li.style.display="block");
+        document.querySelector('.searchDiv>input').style.display = 'none';
+        document.querySelector('.searchDiv').style.width = '50px';
+    }
 
     return (
         
         <div id="header">
-            <Link to="/"><h1>신세개백화점</h1></Link>
-            {/* 로그인 외 personal 메뉴창 */}
-            <nav className="personal menu">
-                <ul>
-                    {isLogin && <>
-                        <li>{username}님 환영합니다🎉</li>
-                        <li onClick={logoutClick}>로그아웃</li>
-                        {id==='admin' && <li><Link to="/createProduct">상품등록하기</Link></li>}
-                    </>}
-                    {!isLogin && <>
-                        <li><Link to="/login">로그인</Link></li>
-                        <li><Link to="/join">회원가입</Link></li>
-                    </>}
+            {/* 스크롤 이벤트 전의 헤더 */}
+            <div className='firstHeader'>
+                <Link to="/"><h1>신세개백화점</h1></Link>
+                {/* 로그인 외 personal 메뉴창 */}
+                
+                <nav className="personal menu">
+                    <ul>
+                        {isLogin && <>
+                            <li>{username}님 환영합니다🎉</li>
+                            <li onClick={logoutClick}>로그아웃</li>
+                            {id==='admin' && <li><Link to="/createProduct">상품등록하기</Link></li>}
+                        </>}
+                        {!isLogin && <>
+                            <li><Link to="/login">로그인</Link></li>
+                            <li><Link to="/join">회원가입</Link></li>
+                        </>}
 
-                    <li onClick={LoginCheck}><Link to="/cart">장바구니</Link></li>
-                    <li onClick={LoginCheck}><Link to="/mypage">마이페이지</Link></li>
-                    
-                </ul>
+                        <li onClick={LoginCheck}><Link to="/cart">장바구니</Link></li>
+                        <li onClick={LoginCheck}><Link to="/mypage">마이페이지</Link></li>
+                        
+                    </ul>
+                    <div>
+                    <input id="search" type="text" onChange={onChange} value={input} placeholder="검색어를 입력해보세요🐕"/><span onClick={onClickSearch}>🔎</span>
+                    </div>
+                </nav>
+
+                
+                
+            </div>
+
+            {/* 납작한 헤더 */}
+            <nav className='scroll menu'>
                 <div>
-                    <input id="search" type="text" onChange={onChange} value={input}/><span onClick={onClickSearch}>🔎</span>
+                        <Link to="/"><h2>신세개백화점</h2></Link>
+
+                        <ul>
+                            <li><Link to="/products/weeklybest">주간BEST</Link></li>
+                            <li><Link to="/products/reviewbest">리뷰BEST</Link></li>
+                            <li><Link to="/products/new">신제품</Link></li>
+                            <li className='hidden-li' onClick={onClick}>+</li>
+                            <li className="size subclass">사이즈별 
+                                <ul>
+                                    <li><Link to="/products/대형견">대형견</Link></li>
+                                    <li><Link to="/products/중형견">중형견</Link></li>
+                                    <li><Link to="/products/소형견">소형견</Link></li>
+                                </ul>
+                            </li>
+
+                            <li className="play subclass">놀이유형별 
+                                <ul>
+                                    <li><Link to="/products/노즈워크">노즈워크</Link></li>
+                                    <li><Link to="/products/인형">인형</Link></li>
+                                    <li><Link to="/products/공">공</Link></li>
+                                    <li><Link to="/products/이갈이">이갈이</Link></li>
+                                    <li><Link to="/products/터그놀이">터그놀이</Link></li>
+                                </ul>
+                            </li>
+
+                            <li className="material subclass">소재별 
+                                <ul>
+                                    <li><Link to="/products/패브릭">패브릭</Link></li>
+                                    <li><Link to="/products/라텍스">라텍스</Link></li>
+                                    <li><Link to="/products/나무">나무</Link></li>
+                                    <li><Link to="/products/플라스틱">플라스틱</Link></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div className='searchDiv'>
+                            <input id="search" type="text" onChange={onChange} value={input} placeholder="검색어를 입력해보세요🐕"/><span onClick={onClickSearch}>🔎</span>
+                        </div>
+
+                        <ul>
+                            {isLogin && <>
+                                <li>{username}님 환영합니다🎉</li>
+                                <li onClick={logoutClick}>로그아웃</li>
+                                {id==='admin' && <li><Link to="/createProduct">상품등록하기</Link></li>}
+                            </>}
+                            {!isLogin && <>
+                                <li><Link to="/login">로그인</Link></li>
+                                <li><Link to="/join">회원가입</Link></li>
+                            </>}
+
+                            <li onClick={LoginCheck}><Link to="/cart">장바구니</Link></li>
+                            <li onClick={LoginCheck}><Link to="/mypage">마이페이지</Link></li>
+                            
+                        </ul>
                 </div>
+                
             </nav>
             
             {/* 반응형 햄버거 메뉴 */}
@@ -220,7 +293,7 @@ const Header = () => {
            
                 
 
-            <nav className="product menu">
+            <nav className="product menu on">
                 <ul>
                     <li>
                         <div>BEST</div>
@@ -259,8 +332,6 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
-            <div id="pull" onClick={onClick}></div>
-            
         </div>
     );
 };
