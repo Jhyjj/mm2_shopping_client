@@ -50,7 +50,7 @@ const Cart = () => {
             console.log('동일한 제품 존재')
             checkList.splice(checkList.indexOf(list=>list.no===product.no),1)
         }
-    },[product])
+    },[product,checkList])
     
     console.log(checkList)
 
